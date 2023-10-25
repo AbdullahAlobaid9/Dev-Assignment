@@ -1,4 +1,7 @@
 package com.sdaia.assignment.Dev.Assignment.MonitorApp.repository;
 
-public class WeatherDataRepository {
+import com.sdaia.assignment.Dev.Assignment.MonitorApp.model.WeatherData;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface WeatherDataRepository extends JpaRepository<WeatherData, Long> {
 }
