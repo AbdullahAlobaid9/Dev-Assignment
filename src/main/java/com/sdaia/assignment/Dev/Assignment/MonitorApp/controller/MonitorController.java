@@ -20,7 +20,7 @@ public class MonitorController {
         this.weatherDataRepository = weatherDataRepository;
     }
 
-    @KafkaListener(topics = "your-kafka-topic")
+    @KafkaListener(topics = "weather-data-topic")
     public void consumeWeatherData(WeatherData weatherData) {
         // Store the received data in the database
         weatherDataRepository.save(weatherData);
