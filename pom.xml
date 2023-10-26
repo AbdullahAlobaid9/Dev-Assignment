@@ -69,6 +69,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.sdaia.assignment.Dev.Assignment.WeatherDataGenerator.WeatherGeneratorApplication</mainClass>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
