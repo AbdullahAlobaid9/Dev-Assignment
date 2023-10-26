@@ -25,5 +25,4 @@ public class WeatherData {
     @Column(name = "degree")
     private double degree;
 
-    // Constructors, getters, and setters
 }
