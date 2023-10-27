@@ -31,18 +31,16 @@ services:
       POSTGRES_DB: postgres
 
   weather-data-generator:
-    image: placeholder/weather-data-generator
     build:
-      context: ./src/main/java/com/sdaia/assignment/Dev/Assignment/WeatherDataGenerator
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./src/main/java/com/sdaia/assignment/Dev/Assignment/WeatherDataGenerator/Dockerfile
     ports:
       - "8080:8080"
 
   ingestion-service:
-    image: placeholder/ingestion-service
     build:
-      context: ./src/main/java/com/sdaia/assignment/Dev/Assignment/IngestionService
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./src/main/java/com/sdaia/assignment/Dev/Assignment/IngestionService/Dockerfile
     ports:
       - "8081:8081"
     environment:
@@ -51,10 +49,9 @@ services:
       INGESTION_KAFKA_PRODUCER_VALUE_SERIALIZER: org.springframework.kafka.support.serializer.JsonSerializer
 
   monitor-app:
-    image: placeholder/monitor-app
     build:
-      context: ./src/main/java/com/sdaia/assignment/Dev/Assignment/MonitorApp
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./src/main/java/com/sdaia/assignment/Dev/Assignment/MonitorApp/Dockerfile
     ports:
       - "8082:8082"
     environment:
@@ -65,3 +62,4 @@ services:
       MONITOR_SPRING_DATASOURCE_PASSWORD: devAdmin
       MONITOR_SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.postgresql.Driver
       MONITOR_SPRING_JPA_HIBERNATE_DDL_AUTO: update
+

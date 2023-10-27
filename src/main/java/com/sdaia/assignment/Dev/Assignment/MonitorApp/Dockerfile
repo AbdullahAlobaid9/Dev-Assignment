@@ -1,29 +1,26 @@
-# Use an official OpenJDK image with JDK included as build stage
-FROM openjdk:11-jdk-slim as build
+# Use an official Maven image as build stage
+FROM maven:3.8.1-openjdk-17 as build
 
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy the source code for MonitorApp
+# Copy the source code for WeatherDataGenerator
 COPY . .
 
-# Compile the Java code and create the JAR file
-RUN javac -d bin *.java
-
-# Create the JAR file
-RUN jar cvfe MonitorApp.jar com.sdaia.assignment.Dev.Assignment.MonitorApp.MonitorAppApplication -C bin .
+# Package the Spring Boot application into a JAR file
+RUN mvn clean package
 
 # Use a smaller image for runtime
-FROM openjdk:11-jre-slim
+FROM openjdk:17-jdk-slim
 
 # Set the working directory inside the container
 WORKDIR /app
 
 # Copy the JAR file from the build stage
-COPY --from=build /app/MonitorApp.jar .
+COPY --from=build /app/target/*.jar app.jar
 
 # Expose the port your app runs on
-EXPOSE 8082
+EXPOSE 8081
 
 # Run the application
-CMD ["java", "-jar", "MonitorApp.jar"]
+CMD ["java", "-jar", "app.jar"]
