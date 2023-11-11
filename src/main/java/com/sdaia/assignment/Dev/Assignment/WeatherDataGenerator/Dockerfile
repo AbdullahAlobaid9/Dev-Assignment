@@ -11,7 +11,7 @@ COPY . .
 RUN mvn clean package
 
 # Use a smaller image for runtime
-FROM openjdk:17-jdk-slim
+FROM openjdk:21-jdk-slim
 
 # Set the working directory inside the container
 WORKDIR /app

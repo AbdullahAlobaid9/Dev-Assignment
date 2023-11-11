@@ -14,7 +14,7 @@
 	<name>Dev-Assignment</name>
 	<description>Dev Assignment by Sdaia for Abdullah Alobaid</description>
 	<properties>
-		<java.version>21</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
